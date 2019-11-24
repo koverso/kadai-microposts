@@ -11,13 +11,13 @@
                 </div>
                 <div>
                     <div class="row">
-                    @if (Auth::id() == $micropost->user_id)
+                    @if (Auth::id() == $micropost->user_id && Auth::id() == $user->id)
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     @endif
                     @if (count($microposts) > 0)
-                        @include('user_favorite.favorite_button', ['user' => $user])
+                        @include('user_favorite.favorite_button', ['microposts' => $microposts])
                     @endif
                     </div>
                 </div>
@@ -26,3 +26,4 @@
     @endforeach
 </ul>
 {{ $microposts->links('pagination::bootstrap-4') }}
+
