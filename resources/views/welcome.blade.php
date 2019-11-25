@@ -6,7 +6,6 @@
             <div class="col-sm-4">
                 @if (Auth::id() == $user->id)
                 <p>Hello {{ Auth::user()->name }}さん！Let's Post!!</p>
-                <p></p>
                     {!! Form::open(['route' => 'microposts.store']) !!}
                         <div class="form-group">
                             {!! Form::textarea('content', old('content'), ['class' => 'form-control mb-3', 'rows' => '8']) !!}
